@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>File Transfer Interface</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to the Secure File Transfer Interface</h2>
+
+        <!-- Divisions for Upload Files and Send Files to User -->
+        <div class="upload-send-container">
+            <!-- Division for Uploading Files -->
+            <div class="upload-section">
+                <h3>UPLOAD FILES</h3>
+                <form id="fileUploadForm">
+                    <input type="file" id="fileInput" name="file" required>
+                    <button type="button" onclick="uploadFile()">Upload File</button>
+                    <!-- AES Encryption Button  -->
+                    <button type="button" onclick="aesEncryptAndUpload()">Encrypt and Upload</button>
+                    <hr/>
+                    <button onclick="showUploadedFiles()">Show Uploaded Files</button>
+                    <!-- Interface to Display Uploaded Files -->
+                    <h4>Uploaded Files</h4>
+                    <ul id="uploadedFilesList"></ul>
+                </form>
+            </div>
+
+            <!-- Division for Sending Files to User -->
+            <div class="send-section">
+                <h3>SEND FILES TO USER</h3> 
+                <form id="sendFileForm">
+                    Recipient User
+                    <input type="text" id="recipientUsername" name="recipientUsername" placeholder="Recipient Username" required><br/>
+                    <br/>
+                    <input type="file" id="fileToSend" name="fileToSend" required><br/>
+                    <button type="button" onclick="sendFile()">Send File</button>
+                    <!-- AES Encryption Button -->
+                    <button type="button" onclick="sendEncryptedFile()">Encrypt and Send</button>
+                    <br/>
+                    <hr/>
+                    <input type="text" id="aesKey" placeholder="Enter AES Key">
+                    <input type="text" id="aesIv" placeholder="Enter AES IV">
+                    <button onclick="decryptSentFile()">Decrypt</button>
+                    <hr/>
+                    <button onclick="showSentFiles()">Show Sent Files</button><br/>
+                    <button onclick="showReceivedFiles()">Show Received Files</button>
+                    <!-- Interface to Display Sent and Received Files -->
+                    <h4>Sent Files</h4>
+                    <ul id="sentFilesList"></ul>
+                    <h4>Received Files</h4>
+                    <ul id="receivedFilesList"></ul>
+                </form>
+            </div>
+        </div>
+
+        <!-- Remaining Buttons -->
+        <div class="remaining-section">
+            <h2>VPN</h2>
+                <label class="switch">
+                    <input type="checkbox" id="vpnSwitch" onchange="toggleVPN()">
+                <span class="slider round"></span>
+                </label>
+                <br/>
+                <br/>
+                <div id="vpnStatusMessage"></div>
+            <!-- Logout Button -->
+            <button onclick="logoutUser()">Logout</button>
+            <br/>
+            <br/>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
